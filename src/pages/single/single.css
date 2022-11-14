@@ -1,0 +1,17 @@
+html{
+    font-size: 62.5%;
+  }
+.single{
+    display: flex;
+    flex-direction:row ;
+}
+@media(max-width:998px){
+    html{
+      font-size: 55%;
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size: 45%;
+    }
+  }

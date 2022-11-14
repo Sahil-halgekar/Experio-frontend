@@ -1,0 +1,43 @@
+html{
+    font-size: 62.5%;
+  }
+  
+.home{
+    display: flex;
+}
+.categoryheader{
+  color: black;
+  font-size: 2rem;
+  display: inline;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cat{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.cats{
+  color: lightcoral;
+  font-size: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media(max-width:998px){
+    html{
+      font-size: 55%;
+    }
+  }
+  @media(max-width:768px){
+    html{
+      font-size: 45%;
+    }
+  }

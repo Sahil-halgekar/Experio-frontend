@@ -1,0 +1,126 @@
+html{
+  font-size: 62.5%;
+}
+
+.top {
+  width: 100%;
+  height: 5.0rem;
+  background-color: rgb(237, 241, 243);
+  opacity: 0.9;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+  font-family: 'Amatic SC', cursive;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.topLeft,
+.topRight {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topCenter {
+  flex: 6;
+  margin-left: 26%;
+}
+
+.topList {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topListItem {
+  margin-right: 2.0rem;
+  font-size: 4.0rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: black;
+}
+
+.topListItem:hover{
+    color: gray;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+.nav-btn {
+  display: none;
+	padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--textColor);
+	opacity: 0;
+	font-size: 1.8rem;
+}
+@media(max-width:998px){
+  html{
+    font-size: 55%;
+  }
+}
+@media(max-width:768px){
+  html{
+    font-size: 45%;
+  }
+}
+@media only screen and (max-width: 768px) {
+	 .nav-btn {
+		display: block;
+		opacity: 1;
+	}
+    .main-cont{
+      /* background-image: "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+      background-repeat: no-repeat;
+      background-size: cover; */
+      background-color: lavender;
+    }
+
+
+	.top {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 50%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color:wheat;
+		transition: 1s;
+		transform: translateY(-100vh);
+	}
+  .topLeft,.topRight,.topCenter,.topList,.topListItem{
+    display: block;
+    flex: 0;
+    top: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .topRight{
+    display:flex;
+    font-size: 8rem !important;
+  }
+	 .responsive_nav {
+		transform: none;
+	}
+
+	 .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+}
+
