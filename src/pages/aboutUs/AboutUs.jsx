@@ -16,16 +16,16 @@ export default function AboutUs() {
                 <p>Social Media Handles:  </p>
                 <ul>
                 <li>
-                <a href='www.instagram.com/sahil_3258'><FaInstagram/>Sahil Halgekar</a><br/>
+                <a href='https://www.instagram.com/sahil_3258'><FaInstagram/>Sahil Halgekar</a><br/>
                 </li>
                 <li>
-                <a href='www.instagram.com/navjeet.kohli02'><FaInstagram/>Navjeet Kohli</a><br/>
+                <a href='https://www.instagram.com/navjeet.kohli02'><FaInstagram/>Navjeet Kohli</a><br/>
                 </li>
                 <li>
-                <a href='www.instagram.com/rahul_patil_33_'><FaInstagram/>Rahul Patil</a><br/>
+                <a href='https://www.instagram.com/rahul_patil_33_'><FaInstagram/>Rahul Patil</a><br/>
                 </li>
                 <li>
-                <a href='www.instagram.com/prav_752'><FaInstagram/>Praveen Jugal</a>
+                <a href='https://www.instagram.com/prav_752'><FaInstagram/>Praveen Jugal</a>
                 </li>
                 </ul>
             </div>
