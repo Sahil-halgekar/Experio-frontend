@@ -84,7 +84,7 @@ export default function SinglePost() {
         text,
       });
     } catch (err) {}
-    window.location.reload(true);
+    window.location.replace("/");
   };
   return (
     <div className="singlePost">
