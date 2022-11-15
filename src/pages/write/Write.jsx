@@ -80,7 +80,7 @@ export default function Write() {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
-            required
+            required={true}
             onChange={(e) => setFile(e.target.files[0])}
                     />
           <input
@@ -89,7 +89,7 @@ export default function Write() {
             className="writeInput"
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
-            required 
+            required={true}
           />
         </div>
         <Select placeholder="Category" className="Category" options={categoryList} required onChange={categoryhandler}/>
@@ -105,7 +105,7 @@ export default function Write() {
               type="text"
               className="writeInputt writeText"
               onChange={e=>setDesc(e.target.value)}
-              required
+              required={true}
           ></textarea>
         </div>
       </form>
