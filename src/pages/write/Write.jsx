@@ -80,18 +80,19 @@ export default function Write() {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
+            required
             onChange={(e) => setFile(e.target.files[0])}
-            required="true"        />
+                    />
           <input
             type="text"
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
-            required="true" 
+            required 
           />
         </div>
-        <Select placeholder="Category" className="Category" options={categoryList} onChange={categoryhandler}/>
+        <Select placeholder="Category" className="Category" options={categoryList} required onChange={categoryhandler}/>
         <div className="editorContainer">
           {/* <ReactQuill
               className="editor"
@@ -104,7 +105,7 @@ export default function Write() {
               type="text"
               className="writeInputt writeText"
               onChange={e=>setDesc(e.target.value)}
-              required="true" 
+              required
           ></textarea>
         </div>
       </form>
