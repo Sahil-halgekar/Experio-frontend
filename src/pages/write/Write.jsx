@@ -4,11 +4,12 @@ import axios from "axios";
 import Select from "react-select"
 import "react-quill/dist/quill.snow.css";
 import { Context } from "../../context/Context";
+import FileBase64 from "react-file-base64"
 
 export default function Write() {
   const [title, setTitle] = useState("");
   // const [value, setValue] = useState("");
-  const [file, setFile] = useState(null);
+  const [photo, setphoto] = useState("");
   const [desc, setDesc] = useState("");
   const { user } = useContext(Context);
 
@@ -44,23 +45,24 @@ export default function Write() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(photo)
     const newPost = {
       username: user.username,
       title,
-      // desc: value,
+      photo,
       desc,
       category:result
     };
-    if (file) {
-      const data =new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
-      try {
-        await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/upload", data);
-      } catch (err) {}
-    }
+    // if (file) {
+    //   const data =new FormData();
+    //   const filename = Date.now() + file.name;
+    //   data.append("name", filename);
+    //   data.append("file", file);
+    //   newPost.photo = filename;
+    //   try {
+    //     await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/upload", data);
+    //   } catch (err) {}
+    // }
     try {
       const res = await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/posts", newPost);
       window.location.replace("/");
@@ -68,20 +70,21 @@ export default function Write() {
   };
   return (
     <div className="write">
-      {file && (
-        <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
+      <p className="requiredText">Please fill all the fields</p>
+      {photo && (
+        <img className="writeImg" src={photo} alt="" />
       )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="description">
-          <label htmlFor="fileInput">
+          {/* <label htmlFor="fileInput">
             <i className="writeIcon fas fa-plus"></i>
-          </label>
-          <input
+          </label> */}
+          <FileBase64
             type="file"
             id="fileInput"
             style={{ display: "none" }}
             required={true}
-            onChange={(e) => setFile(e.target.files[0])}
+            onDone={({base64})=>setphoto(base64)}
                     />
           <input
             type="text"

@@ -7,7 +7,12 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.requiredText{
+  text-align: center;
+  color: red;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
 .writeImg {
   display: block;
   margin-left: auto;

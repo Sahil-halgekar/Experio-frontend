@@ -33,7 +33,7 @@ export default function Post({post}) {
       {post.photo &&(
       <img
         className="postImg"
-        src={PF+post.photo}
+        src={post.photo}
       />)}
       <div className="postInfo">
         <div className="categoryBox">
