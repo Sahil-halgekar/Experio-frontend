@@ -4,17 +4,22 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
+import Parser from "html-react-parser"
+import "react-quill/dist/quill.snow.css";
+import ReactQuill,{ Quill } from "react-quill"
+import ImageResize from 'quill-image-resize-module-react';
 
-export default function SinglePost() {
+export default function SinglePost() { 
+  Quill.register('modules/imageResize', ImageResize);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "https://experio-backend-sahil-halgekar.onrender.com/images/";
   const { user } = useContext(Context);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [comment, setComment] = useState([]);
+  const [content,setContent]=useState("");
   const [cat, setCat] = useState("");
   const [like, setLike] = useState(0);
   const [updateMode, setUpdateMode] = useState(false);
@@ -25,15 +30,32 @@ export default function SinglePost() {
       setLike(res.data.like.length);
       setPost(res.data);
       setTitle(res.data.title);
-      setDesc(res.data.desc);
+      setContent(res.data.desc);
+      setDesc(Parser(res.data.desc));
       setCat(res.data.category)
-      console.log(comment);
-      comment.map((i) => {
-        console.log(i.text, i.username);
-      });
     };
     getPost();
   }, [path]);
+  const modules={
+    toolbar: [
+      [{ 'header': [] }, { 'font': [] }],
+      [{ size: [] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [
+        { 'indent': '-1' },
+        { 'indent': '+1' },
+      ],
+      ['image'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    ],
+    
+    imageResize: {
+      parchment: Quill.import('parchment'),
+      modules: ['Resize', 'DisplaySize']
+    },
+  }
+  const formats = [ 'header', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'link', 'image', 'align' ]
   const handleDelete = async () => {
     try {
       await axios.delete(`https://experio-backend-sahil-halgekar.onrender.com/api/posts/${post._id}`, {
@@ -43,12 +65,14 @@ export default function SinglePost() {
     } catch (err) {}
   };
   const handleUpdate = async () => {
+    
     try {
       await axios.put(`https://experio-backend-sahil-halgekar.onrender.com/api/posts/${post._id}`, {
         username: user.username,
         title,
-        desc,
+        desc:content,
       });
+      window.location.reload();
       setUpdateMode(false);
     } catch (err) {}
   };
@@ -90,7 +114,7 @@ export default function SinglePost() {
     <div className="singlePost">
       <div className="singlePostWrapper">
         {post.photo && (
-          <img src={PF + post.photo} alt="" className="singlePostImg" />
+          <img src={post.photo} alt="" className="singlePostImg" />
         )}
         {updateMode ? (
           <input
@@ -135,13 +159,14 @@ export default function SinglePost() {
           </span>
         </div>
         {updateMode ? (
-          <textarea
+         <ReactQuill  modules={modules}  theme="snow" value={content} onChange={setContent} />
+          /*<textarea
             className="singlePostDescInput"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
-          />
+          />*/
         ) : (
-          <p className="singlePostDesc">{desc}</p>
+          <p  className="singlePostDesc">{desc}</p>
         )}
         {!updateMode && (
           <button className="likeButton" onClick={handleLike}>
@@ -172,7 +197,7 @@ export default function SinglePost() {
                 <p className="commentUser">
                   <span className="profileImg">{item.username.charAt(0)}</span>
                   {item.username}
-                  <span className="commentUser">: {item.text}</span>
+                  <span className="comment-text">: {item.text}</span>
                 </p>
               </div>
             </>

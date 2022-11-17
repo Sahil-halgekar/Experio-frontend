@@ -7,7 +7,7 @@ import Register from "./pages/register/Register";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "./context/Context";
-import AboutUs from "./pages/aboutUs/AboutUs";
+import About from "./pages/about/About"
 import ContactForm from './pages/contact/contact';
 import "./styles.css"
 
@@ -23,10 +23,12 @@ function App() {
         <Route path="/register">{user ? <Home /> : <Register />}</Route>
         <Route path="/login">{user ? <Home /> : <Login />}</Route>
         <Route path="/write">{user ? <Write /> : <Register />}</Route>
-        <Route path="/aboutUs">{ <AboutUs /> }</Route>
         <Route path="/contact">{user ?<ContactForm/>:<Register/>}</Route>
         <Route path="/post/:postId">
           <Single />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
       </Switch>
     </Router>

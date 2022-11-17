@@ -28,7 +28,7 @@ export default function TopBar() {
               </Link>
             </li>
             <li className="topListItem">
-              <Link onClick={showNavbar} className="link" to="/aboutUs">
+              <Link onClick={showNavbar} className="link" to="/about">
                 ABOUT
               </Link>
             </li>

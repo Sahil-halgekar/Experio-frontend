@@ -25,7 +25,6 @@ html{
 
 .singlePostTitle {
   text-align: center;
-  margin: 1.0rem;
   font-family: "Lora", serif;
   font-size: 2.8rem;
 }
@@ -78,11 +77,6 @@ html{
   line-height: 2.5rem;
 }
 
-.singlePostDesc::first-letter {
-  margin-left: 2.0rem;
-  font-size: 3.0rem;
-  font-weight: 600;
-}
 
 .singlePostDescInput {
   border: none;
@@ -98,16 +92,17 @@ html{
 .singlePostButton {
   width: 10.0rem;
   font-weight: bolder;
-  font-size: larger;
+  font-size: 1.8rem;
   border: none;
   background-color: teal;
-  padding: .5rem;
+  padding: .8rem;
   color: white;
   border-radius: .5rem;
   cursor: pointer;
-  align-self: flex-end;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 2.0rem;
-  margin-right: 65.0rem;
 }
 
 .singlePostDate{
@@ -152,11 +147,15 @@ html{
   margin-top: 2%;
   margin-bottom: 1%;
 }
+.commentUser{
+  overflow: scroll;
+  overflow-x: hidden; 
+  overflow-y: hidden;
+}
 .profileImg {
-  padding: 1.5rem;
+  padding: 0.5rem;
   border-radius: 45%;
   background: rgb(212, 82, 104);
-  font-size: 2.3rem;
   color: #fff;
   text-align: center;
   margin-left: 1%;
@@ -193,6 +192,12 @@ html{
   border-radius: 1.5rem;
   cursor: pointer;
 }
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: fill;
+}
 @media(max-width:998px){
   html{
     font-size: 55%;
@@ -201,5 +206,13 @@ html{
 @media(max-width:768px){
   html{
     font-size: 45%;
+  }
+  img{
+    width: 50rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30rem;
+    object-fit: fill;
   }
 }
