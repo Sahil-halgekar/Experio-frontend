@@ -13,7 +13,7 @@ const ContactForm = () => {
       email: email.value,
       message: message.value,
     };
-    const res = await axios.post("/contact", details);
+    const res = await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/contact", details);
     console.log(res);
     setStatus("Submit");
     if (res.data.status === "Message Sent") {
