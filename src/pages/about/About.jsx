@@ -1,8 +1,9 @@
 import React from "react";
 import "./about.css";
 import rahul from "./images/rahul.jpg"
-import praveen from "./images/praveen.PNG"
+import praveen from "./images/praveen.jpg"
 import navjeet from "./images/navjeet.jpg"
+import sahil from "./images/sahil.jpg"
 
 const About = () => {
   return (
@@ -20,12 +21,12 @@ const About = () => {
           <div class="row">
             <div class="team-items">
               <div class="item">
-                <img src="" alt="team" />
+                <img src={sahil} alt="team" />
                 <div class="inner">
                   <div class="info">
                     <h5>Sahil Halgekar</h5>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/" target="_blank">
+                        <a href="https://www.instagram.com/sahil_3258" target="_blank">
                             <span class="fa fa-instagram"></span>
                         </a>
                     </div>

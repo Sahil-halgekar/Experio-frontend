@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.39221ad1.chunk.css",
-    "main.js": "/static/js/main.4c34862d.chunk.js",
-    "main.js.map": "/static/js/main.4c34862d.chunk.js.map",
+    "main.js": "/static/js/main.a44a105c.chunk.js",
+    "main.js.map": "/static/js/main.a44a105c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.00d304ca.js",
     "runtime-main.js.map": "/static/js/runtime-main.00d304ca.js.map",
     "static/css/2.f83b9687.chunk.css": "/static/css/2.f83b9687.chunk.css",
@@ -13,14 +13,15 @@
     "static/css/main.39221ad1.chunk.css.map": "/static/css/main.39221ad1.chunk.css.map",
     "static/js/2.5e70226e.chunk.js.LICENSE.txt": "/static/js/2.5e70226e.chunk.js.LICENSE.txt",
     "static/media/navjeet.a1260109.jpg": "/static/media/navjeet.a1260109.jpg",
-    "static/media/praveen.25b6ee14.PNG": "/static/media/praveen.25b6ee14.PNG",
-    "static/media/rahul.24400325.jpg": "/static/media/rahul.24400325.jpg"
+    "static/media/praveen.6adf0cbf.jpg": "/static/media/praveen.6adf0cbf.jpg",
+    "static/media/rahul.24400325.jpg": "/static/media/rahul.24400325.jpg",
+    "static/media/sahil.e3ff9944.jpg": "/static/media/sahil.e3ff9944.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.00d304ca.js",
     "static/css/2.f83b9687.chunk.css",
     "static/js/2.5e70226e.chunk.js",
     "static/css/main.39221ad1.chunk.css",
-    "static/js/main.4c34862d.chunk.js"
+    "static/js/main.a44a105c.chunk.js"
   ]
 }

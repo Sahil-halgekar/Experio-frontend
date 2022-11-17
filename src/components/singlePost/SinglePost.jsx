@@ -72,7 +72,7 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      window.location.replace(`https://experiio.netlify.app/post/${post._id}`);
+      window.location.replace("/");
       setUpdateMode(false);
     } catch (err) {}
   };
