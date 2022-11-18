@@ -75,7 +75,7 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      history.push(path1)
+      history.push(`/${path1}`)
       setUpdateMode(false);
     } catch (err) {}
   };
