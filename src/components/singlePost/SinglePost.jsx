@@ -39,26 +39,7 @@ export default function SinglePost() {
     };
     getPost();
   }, [path]);
-  const modules={
-    toolbar: [
-      [{ 'header': [] }, { 'font': [] }],
-      [{ size: [] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [
-        { 'indent': '-1' },
-        { 'indent': '+1' },
-      ],
-      ['image'],
-      [{ 'color': [] }, { 'background': [] }],
-      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-    ],
-    
-    imageResize: {
-      parchment: Quill.import('parchment'),
-      modules: ['Resize', 'DisplaySize']
-    },
-  }
-  const formats = [ 'header', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'link', 'image', 'align' ]
+  const editor = useRef(null);
   const handleDelete = async () => {
     try {
       await axios.delete(`https://experio-backend-sahil-halgekar.onrender.com/api/posts/${post._id}`, {
@@ -162,7 +143,13 @@ export default function SinglePost() {
           </span>
         </div>
         {updateMode ? (
-         <ReactQuill  modules={modules}  theme="snow" value={content} onChange={setContent} />
+         <JoditEditor
+         ref={editor}
+         value={content}
+         tabIndex={1} // tabIndex of textarea
+         onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+         onChange={setContent}
+       />
           /*<textarea
             className="singlePostDescInput"
             value={desc}
