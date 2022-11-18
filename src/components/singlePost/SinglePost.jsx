@@ -14,6 +14,7 @@ export default function SinglePost() {
   const history=useHistory()
   const location = useLocation();
   const path = location.pathname.split("/")[2];
+  const path1=location.pathname
   const [post, setPost] = useState({});
   const { user } = useContext(Context);
   const [text, setText] = useState("");
@@ -25,7 +26,7 @@ export default function SinglePost() {
   const [like, setLike] = useState(0);
   const [updateMode, setUpdateMode] = useState(false);
   useEffect(() => {
-    console.log(path)
+    console.log(path1)
     const getPost = async () => {
       const res = await axios.get("https://experio-backend-sahil-halgekar.onrender.com/api/posts/" + path);
       setComment(res.data.comments);
@@ -74,7 +75,7 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      location.reload()
+      location.reload(path1)
       setUpdateMode(false);
     } catch (err) {}
   };
