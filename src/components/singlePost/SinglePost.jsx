@@ -25,6 +25,7 @@ export default function SinglePost() {
   const [like, setLike] = useState(0);
   const [updateMode, setUpdateMode] = useState(false);
   useEffect(() => {
+    console.log(path)
     const getPost = async () => {
       const res = await axios.get("https://experio-backend-sahil-halgekar.onrender.com/api/posts/" + path);
       setComment(res.data.comments);
