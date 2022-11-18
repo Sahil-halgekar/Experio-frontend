@@ -73,14 +73,14 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      history.push(`https://experiio.netlify.app/post/${post._id}`);
+      history.push(`/post/${post._id}`);
       setUpdateMode(false);
     } catch (err) {}
   };
   const handleLike = async () => {
     if(!user)
     {
-      history.push(`https://experiio.netlify.app/register`)
+      history.push(`/register`)
     }
     let flag = 0;
     const res = await axios.get("https://experio-backend-sahil-halgekar.onrender.com/api/posts/" + path);
@@ -109,7 +109,7 @@ export default function SinglePost() {
         text,
       });
     } catch (err) {}
-    history.push(`https://experiio.netlify.app/post/${post._id}`);
+    history.push(`/post/${post._id}`);
   };
   return (
     <div className="singlePost">
