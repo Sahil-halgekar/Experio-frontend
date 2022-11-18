@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
@@ -8,11 +8,10 @@ import Parser from "html-react-parser"
 import "react-quill/dist/quill.snow.css";
 import ReactQuill,{ Quill } from "react-quill"
 import ImageResize from 'quill-image-resize-module-react';
-import { useHistory,useNavigate } from "react-router";
+import { useHistory } from "react-router";
 export default function SinglePost() { 
   Quill.register('modules/imageResize', ImageResize);
   const history=useHistory()
-  const navigate=useNavigate()
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
@@ -74,7 +73,7 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      navigate(0)
+      location.reload()
       setUpdateMode(false);
     } catch (err) {}
   };
