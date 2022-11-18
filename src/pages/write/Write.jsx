@@ -1,37 +1,30 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext,useState,useRef,useMemo} from 'react';
 import "./write.css";
 import axios from "axios";
 import Select from "react-select"
 import "react-quill/dist/quill.snow.css";
 import { Context } from "../../context/Context";
 import FileBase64 from "react-file-base64"
-import ReactQuill,{ Quill } from "react-quill"
-import ImageResize from 'quill-image-resize-module-react';
+import JoditEditor from 'jodit-react';
  
 
 export default function Write() {
-
-  Quill.register('modules/imageResize', ImageResize);
+  
   const [title, setTitle] = useState("");
   // const [value, setValue] = useState("");
   const [photo, setphoto] = useState("");
   const [desc, setDesc] = useState("");
   const { user } = useContext(Context);
-  const modules={
-    toolbar:[
-      [{ font: [] }],
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ color: [] }, { background: [] }],
-        [{ script:  "sub" }, { script:  "super" }],
-        [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
-        ["link", "image"],
-    ],
-    imageResize: {
-      parchment: Quill.import('parchment'),
-      modules: ['Resize', 'DisplaySize']
-    }
-  }
+  const editor = useRef(null);
+  const config = useMemo(
+    () => ({
+        readonly: false, 
+        "uploader": {
+          "insertImageAsBase64URI": true
+        }
+    }),
+    []
+);
 
   var categoryList=[
     {
@@ -72,16 +65,6 @@ export default function Write() {
       photo,
       category:result
     };
-    // if (file) {
-    //   const data =new FormData();
-    //   const filename = Date.now() + file.name;
-    //   data.append("name", filename);
-    //   data.append("file", file);
-    //   newPost.photo = filename;
-    //   try {
-    //     await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/upload", data);
-    //   } catch (err) {}
-    // }
     try {
       const res = await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/posts", newPost);
       window.location.replace("/");
@@ -95,9 +78,6 @@ export default function Write() {
       )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="description">
-          {/* <label htmlFor="fileInput">
-            <i className="writeIcon fas fa-plus"></i>
-          </label> */}
           <div className="writeIcon">
           <FileBase64
             type="file"
@@ -118,7 +98,13 @@ export default function Write() {
         </div>
         <Select placeholder="Category" className="Category" options={categoryList} required onChange={categoryhandler}/>
         <div className="editorContainer">
-        <ReactQuill modules={modules} theme="snow" value={desc} onChange={setDesc} />
+        <JoditEditor
+                  ref={editor}
+                  value={desc}
+                  config={config}
+                  
+                  onChange={setDesc}
+                />
 
             {/*<textarea
               placeholder="Write your Experience..."

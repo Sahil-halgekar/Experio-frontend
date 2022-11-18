@@ -1,14 +1,15 @@
 import axios from "axios";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef ,useMemo} from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 import Parser from "html-react-parser"
-import JoditEditor from 'jodit-react';
+
 import { useHistory } from "react-router";
+import JoditEditor from 'jodit-react';
 export default function SinglePost() { 
-  Quill.register('modules/imageResize', ImageResize);
+
   const history=useHistory()
   const location = useLocation();
   const path = location.pathname.split("/")[2];
@@ -23,8 +24,18 @@ export default function SinglePost() {
   const [cat, setCat] = useState("");
   const [like, setLike] = useState(0);
   const [updateMode, setUpdateMode] = useState(false);
+  const editor = useRef(null);
+  const config = useMemo(
+    () => ({
+        readonly: false, 
+        "uploader": {
+          "insertImageAsBase64URI": true
+        }
+    }),
+    []
+);
   useEffect(() => {
-    console.log(path1)
+    
     const getPost = async () => {
       const res = await axios.get("https://experio-backend-sahil-halgekar.onrender.com/api/posts/" + path);
       setComment(res.data.comments);
@@ -37,7 +48,6 @@ export default function SinglePost() {
     };
     getPost();
   }, [path]);
-  const editor = useRef(null);
   const handleDelete = async () => {
     try {
       await axios.delete(`https://experio-backend-sahil-halgekar.onrender.com/api/posts/${post._id}`, {
@@ -141,13 +151,13 @@ export default function SinglePost() {
           </span>
         </div>
         {updateMode ? (
-         <JoditEditor
-         ref={editor}
-         value={content}
-         tabIndex={1} // tabIndex of textarea
-         onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-         onChange={setContent}
-       />
+          				<JoditEditor
+                  ref={editor}
+                  value={content}
+                  config={config}
+                  
+                  onChange={setContent}
+                />
           /*<textarea
             className="singlePostDescInput"
             value={desc}

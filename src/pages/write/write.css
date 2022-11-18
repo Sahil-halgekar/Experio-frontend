@@ -148,4 +148,8 @@ input::file-selector-button{
   html{
     font-size: 45%;
   }
+  img{
+    width: 50%;
+    height: 50%;
+  }
 }

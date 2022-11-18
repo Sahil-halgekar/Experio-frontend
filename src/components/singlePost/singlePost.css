@@ -192,12 +192,6 @@ html{
   border-radius: 1.5rem;
   cursor: pointer;
 }
-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  object-fit: fill;
-}
 @media(max-width:998px){
   html{
     font-size: 55%;
@@ -208,11 +202,7 @@ img{
     font-size: 45%;
   }
   img{
-    width: 80%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%;
-    object-fit: fill;
+    width: 50%;
+    height: 50%;
   }
 }
