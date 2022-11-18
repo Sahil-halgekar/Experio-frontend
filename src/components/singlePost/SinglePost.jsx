@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 import Parser from "html-react-parser"
-import "react-quill/dist/quill.snow.css";
-import ReactQuill,{ Quill } from "react-quill"
-import ImageResize from 'quill-image-resize-module-react';
+import JoditEditor from 'jodit-react';
 import { useHistory } from "react-router";
 export default function SinglePost() { 
   Quill.register('modules/imageResize', ImageResize);
