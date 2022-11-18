@@ -75,7 +75,7 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      history.push(`/${path1}`)
+      window.location.replace("/")
       setUpdateMode(false);
     } catch (err) {}
   };
@@ -111,7 +111,7 @@ export default function SinglePost() {
         text,
       });
     } catch (err) {}
-    history.push(path1)
+    window.location.replace("/")
   };
   return (
     <div className="singlePost">
