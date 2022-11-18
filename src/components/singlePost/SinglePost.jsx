@@ -111,7 +111,7 @@ export default function SinglePost() {
         text,
       });
     } catch (err) {}
-    history.go(0);
+    history.push(path1)
   };
   return (
     <div className="singlePost">
