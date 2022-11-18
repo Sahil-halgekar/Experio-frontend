@@ -8,9 +8,10 @@ import Parser from "html-react-parser"
 import "react-quill/dist/quill.snow.css";
 import ReactQuill,{ Quill } from "react-quill"
 import ImageResize from 'quill-image-resize-module-react';
-
+import { useHistory } from "react-router";
 export default function SinglePost() { 
   Quill.register('modules/imageResize', ImageResize);
+  const history=useHistory()
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
@@ -72,14 +73,14 @@ export default function SinglePost() {
         title,
         desc:content,
       });
-      window.location.replace("/");
+      history.push(`https://experiio.netlify.app/post/${post._id}`);
       setUpdateMode(false);
     } catch (err) {}
   };
   const handleLike = async () => {
     if(!user)
     {
-      window.location.replace("/register");
+      history.push(`https://experiio.netlify.app/register`)
     }
     let flag = 0;
     const res = await axios.get("https://experio-backend-sahil-halgekar.onrender.com/api/posts/" + path);
@@ -108,7 +109,7 @@ export default function SinglePost() {
         text,
       });
     } catch (err) {}
-    window.location.replace("/");
+    history.push(`https://experiio.netlify.app/post/${post._id}`);
   };
   return (
     <div className="singlePost">
