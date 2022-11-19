@@ -216,4 +216,7 @@ html{
     margin-top: 5.5%;
     margin-left: 3%;
   }
+  .singlePostImg{
+    width: 80%;
+  }
 }

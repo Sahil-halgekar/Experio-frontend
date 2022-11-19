@@ -153,4 +153,7 @@ input::file-selector-button{
     width: 50%;
     height: 50%;
   }
+  .writeImg{
+    width: 80%;
+  }
 }
