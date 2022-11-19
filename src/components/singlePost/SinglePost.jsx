@@ -69,7 +69,7 @@ export default function SinglePost() {
           desc: content,
         }
       );
-      history.push(`${post._id}`)
+      window.location.reload(true)
       setUpdateMode(false);
     } catch (err) {}
   };
@@ -115,7 +115,7 @@ export default function SinglePost() {
         }
       );
     } catch (err) {}
-    history.go(0);
+    window.location.reload(true)
   };
   return (
     <div className="singlePost">
