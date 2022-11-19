@@ -69,7 +69,7 @@ export default function SinglePost() {
           desc: content,
         }
       );
-      window.location.replace("/");
+      history.push(`${post_id}`)
       setUpdateMode(false);
     } catch (err) {}
   };
@@ -115,7 +115,7 @@ export default function SinglePost() {
         }
       );
     } catch (err) {}
-    window.location.replace("/");
+    history.go(0);
   };
   return (
     <div className="singlePost">
