@@ -75,6 +75,7 @@ html{
   color: #666;
   font-size: 1.8rem;
   line-height: 2.5rem;
+  margin-right: 1.5%;
 }
 
 
@@ -134,7 +135,13 @@ html{
   margin-right: auto;
   margin-top: 2%;
 }
-
+.comment-text{
+  margin-top: 1.5%;
+  margin-left: 3%;
+}
+.comment-date{
+  float: right;
+}
 .commentUser{
   width: 80%;
   padding: 2.2rem;
@@ -153,16 +160,16 @@ html{
   overflow-y: hidden;
 }
 .profileImg {
-  padding: 0.5rem;
-  border-radius: 45%;
+  padding: 1.8rem;
+  border-radius: 50%;
   background: rgb(212, 82, 104);
   color: #fff;
   text-align: center;
   margin-left: 1%;
-  margin-right: 1%;
+  margin-right: 0.5%;
 }
 .addComment{
-  width:80%;
+  width:50%;
   padding: 1.0rem;
   display: block;
   margin-left: auto;
@@ -204,5 +211,9 @@ html{
   img{
     width: 50%;
     height: 50%;
+  }
+  .comment-text{
+    margin-top: 5.5%;
+    margin-left: 3%;
   }
 }

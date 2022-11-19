@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import "./login.css";
-
+import toast, { Toaster } from 'react-hot-toast';
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
@@ -10,6 +10,13 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if((userRef.current.value)=="")
+    {
+      toast.error("Username cannot be empty")
+    }
+    else if(passwordRef.current.value==""){
+      toast.error("Password cannot be empty")
+    }else{
     try {
       const res = await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/auth/login", {
         username: userRef.current.value,
@@ -18,8 +25,9 @@ export default function Login() {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
-      alert("Invalid Credentials..!!");
+      toast.error("Invalid Credentials..!!");
     }
+  }
   };
 
   return (
@@ -49,6 +57,18 @@ export default function Login() {
             </button>
         </div>
       </div>
+      <Toaster   toastOptions={{
+    success: {
+      style: {
+        fontSize:"2rem",
+      },
+    },
+    error: {
+      style: {
+        fontSize:"2rem",
+      },
+    },
+  }} />
     </div>
   );
 }

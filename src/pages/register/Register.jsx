@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext,useState } from "react";
 import "./register.css";
 import { Context } from "../../context/Context";
-
+import toast, { Toaster } from 'react-hot-toast';
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -11,6 +11,17 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if((username)=="")
+    {
+      toast.error("Username cannot be empty")
+    }
+    else if(password==""){
+      toast.error("Password cannot be empty")
+    }
+    else if(email=="")
+    {
+      toast.error("Email cannot be empty")
+    }else{
     try {
       const res = await axios.post("https://experio-backend-sahil-halgekar.onrender.com/api/auth/register", {
         username,
@@ -19,8 +30,9 @@ export default function Register() {
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) { 
-      alert("Username and Email already exists..!!")
+      toast.error("Username or Email already exists..!!")
     }
+  }
   };
   return (
     <div className="register">
@@ -37,7 +49,7 @@ export default function Register() {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           className="registerInput2"
           placeholder="Enter Email"
           onChange={(e) => setEmail(e.target.value)}
@@ -55,6 +67,18 @@ export default function Register() {
         </button>
       </div>
       </div>
+      <Toaster   toastOptions={{
+    success: {
+      style: {
+        fontSize:"2rem",
+      },
+    },
+    error: {
+      style: {
+        fontSize:"2rem",
+      },
+    },
+  }} />
     </div>
   );
 }

@@ -36,9 +36,11 @@ html{
 } */
 
 
-.editor {
-  height: 100%;
-  width: 100%;
+.editorContainer {
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: .2rem solid black;
 }
 
