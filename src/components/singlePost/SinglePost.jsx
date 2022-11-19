@@ -69,6 +69,7 @@ export default function SinglePost() {
           desc: content,
         }
       );
+      history.push(`${post._id}`)
       setUpdateMode(false);
     } catch (err) {}
   };
