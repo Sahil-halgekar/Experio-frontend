@@ -21,7 +21,7 @@ html{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2%;
-  height: 50.0rem;
+  width: 40%;
   border-radius: 1.0rem;
   object-fit: fill;
 }
